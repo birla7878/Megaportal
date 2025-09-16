@@ -1,4 +1,4 @@
-# MegaPortal Pro (Fully Functional Demo)
+# MegaPortal Pro
 
 A multi-page, responsive UI with **functional front‑end features** powered by LocalStorage:
 - **Matrimonial**: live filters over demo profiles.
