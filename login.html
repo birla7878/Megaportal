@@ -5,6 +5,7 @@
   <title>Login - MegaPortal</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://unpkg.com/@supabase/supabase-js"></script>
   <style>
     body {
       background: #f5f5f5;
@@ -102,8 +103,8 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-  const supabaseUrl = 'https://YOUR_PROJECT.supabase.co'; // Replace with your project URL
-  const supabaseKey = 'YOUR_ANON_KEY'; // Replace with your anon/public key
+  const supabaseUrl = 'https://oixequtjnhlnarcuycca.supabase.co'; // Replace with your project URL
+  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9peGVxdXRqbmhsbmFyY3V5Y2NhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgwMjMwNTUsImV4cCI6MjA3MzU5OTA1NX0.XcH-fUgnAm-yHn-ZIMDtuHNqyckwsxjFQk2MGre92S8'; // Replace with your anon/public key
   const supabase = Supabase.createClient(supabaseUrl, supabaseKey);
 
   const loginForm = document.getElementById('loginForm');
@@ -127,6 +128,9 @@
       window.location.href = "index.html";
     }
   });
+
+  <script src="auth.js"></script>
+
 </script>
 </body>
 </html>
