@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>MegaPortal Pro — Social</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/social.css" />
+  <link rel="icon" href="assets/img/favicon.png">
+  <style>
+    /* Stories CSS */
+    .stories-panel {
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      margin-bottom: 14px;
+      background: #fff;
+      padding: 10px 0;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .stories {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      gap: 12px;
+      padding: 0 10px;
+    }
+    .story {
+      flex: 0 0 auto;
+      text-align: center;
+      font-size: 12px;
+    }
+    .story img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 2px solid #ff5a5f;
+      object-fit: cover;
+    }
+    .story-arrow {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 0 10px;
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Header -->
+  <header class="header">
+    <div class="container navbar">
+      <a class="brand" href="index.html">
+        <div class="brand-badge">MP</div> MegaPortal
+      </a>
+
+      <!-- Mobile Toggle -->
+      <button class="mobile-toggle" aria-label="Toggle Menu">☰</button>
+
+      <!-- Navbar Links -->
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="matrimonial.html">Matrimonial</a>
+        <a href="social.html">Social</a>
+        <a href="shop.html">Shop</a>
+        <a href="cart.html" class="cart-link">Cart <span id="cartCount" class="cart-count">0</span></a>
+        <a href="contact.html">Contact</a>
+
+        <!-- Auth Buttons -->
+        <a class="btn btn-ghost" href="login.html">Login</a>
+        <a class="btn btn-primary" href="signup.html">Sign Up</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Layout -->
+  <main class="container section">
+    <div class="social-layout">
+
+      <!-- Left Sidebar -->
+      <aside class="sidebar-left">
+        <h3>Menu</h3>
+        <ul>
+          <li><a href="social.html" class="active">Feed</a></li>
+          <li><a href="profile.html">Profile</a></li>
+          <li><a href="edit-profile.html">Edit Profile</a></li>
+          <li><a href="favourites.html">Favourites</a></li>
+          <li><a href="groups.html">Groups</a></li>
+          <li><a href="pages.html">Pages</a></li>
+        </ul>
+      </aside>
+
+      <!-- Center Content -->
+      <div class="center-content">
+
+        <!-- Stories Section -->
+        <div class="stories-panel">
+          <button class="story-arrow left">❮</button>
+          <div class="stories" id="stories">
+            <div class="story"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Story"><span>Rohan</span></div>
+            <div class="story"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Story"><span>Meera</span></div>
+            <div class="story"><img src="https://randomuser.me/api/portraits/men/50.jpg" alt="Story"><span>Vikram</span></div>
+            <div class="story"><img src="https://randomuser.me/api/portraits/women/12.jpg" alt="Story"><span>Aarti</span></div>
+            <div class="story"><img src="https://randomuser.me/api/portraits/men/14.jpg" alt="Story"><span>Rajesh</span></div>
+          </div>
+          <button class="story-arrow right">❯</button>
+        </div>
+
+        <!-- New Post Form -->
+        <div class="panel" style="margin-bottom:14px">
+          <form id="newPostForm">
+            <input class="input" type="text" id="npAuthor" placeholder="Your name" required>
+            <textarea class="input" id="npText" rows="3" placeholder="What's on your mind?" required></textarea>
+            <button class="btn btn-primary" type="submit">Post</button>
+          </form>
+        </div>
+
+        <!-- Posts Feed -->
+        <div class="feed" id="feed"></div>
+      </div>
+
+      <!-- Right Sidebar -->
+      <aside class="sidebar-right">
+        <!-- Friend Requests -->
+        <div class="friend-requests">
+          <h3>Friend Requests</h3>
+          <ul>
+            <li>
+              <img src="https://randomuser.me/api/portraits/men/21.jpg"> 
+              <span>Aman</span> 
+              <div>
+                <button class="btn btn-primary small">Accept</button>
+                <button class="btn btn-ghost small">Ignore</button>
+              </div>
+            </li>
+            <li>
+              <img src="https://randomuser.me/api/portraits/women/24.jpg"> 
+              <span>Neha</span> 
+              <div>
+                <button class="btn btn-primary small">Accept</button>
+                <button class="btn btn-ghost small">Ignore</button>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Suggestions -->
+        <div class="suggestions">
+          <h3>Suggestions</h3>
+          <ul>
+            <li>
+              <img src="https://randomuser.me/api/portraits/women/12.jpg"> 
+              <span>Aarti</span> 
+              <button class="btn btn-ghost small">Add</button>
+            </li>
+            <li>
+              <img src="https://randomuser.me/api/portraits/men/14.jpg"> 
+              <span>Rajesh</span> 
+              <button class="btn btn-ghost small">Add</button>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Chatbox -->
+        <div class="chatbox">
+          <h3>Chat</h3>
+          <div class="chat-messages"></div>
+          <input type="text" placeholder="Type a message...">
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer fixed-footer">
+    <div class="container footer-inner">
+      <small>© 2025 MegaPortal Pro</small>
+      <small>Built with ❤️ — Supabase demo</small>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/social-app.js"></script>
+  <script>
+    // Story Scroll
+    const stories = document.getElementById("stories");
+    const leftBtn = document.querySelector(".story-arrow.left");
+    const rightBtn = document.querySelector(".story-arrow.right");
+
+    leftBtn.addEventListener("click", () => stories.scrollBy({ left: -200, behavior: "smooth" }));
+    rightBtn.addEventListener("click", () => stories.scrollBy({ left: 200, behavior: "smooth" }));
+  </script>
+</body>
+</html>

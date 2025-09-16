@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - MegaPortal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    body {
+      background: #f5f5f5;
+      font-family: 'Arial', sans-serif;
+    }
+    .boxed {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 90vh;
+    }
+    .card {
+      max-width: 500px;
+      width: 100%;
+      padding: 24px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+    .card h2 {
+      margin-bottom: 16px;
+    }
+    .input {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+    .btn {
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    .btn-primary {
+      background: #e53935;
+      color: #fff;
+      width: 100%;
+      margin-top: 12px;
+      transition: background 0.3s;
+    }
+    .btn-primary:hover {
+      background: #d32f2f;
+    }
+    p {
+      font-size: 14px;
+      margin-top: 14px;
+    }
+    p a {
+      color: #e53935;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+<header class="header">
+  <div class="container navbar">
+    <a class="brand" href="index.html">
+      <div class="brand-badge">MP</div> MegaPortal
+    </a>
+    <button class="mobile-toggle">☰</button>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="matrimonial.html">Matrimonial</a>
+      <a href="social.html">Social</a>
+      <a href="shop.html">Shop</a>
+      <a href="cart.html">Cart <span id="cartCount" class="cart-count">0</span></a>
+      <a href="contact.html">Contact</a>
+      <a class="btn btn-ghost" href="login.html">Login</a>
+      <a class="btn btn-primary" href="signup.html">Sign Up</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container section">
+  <div class="boxed">
+    <div class="card">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <input class="input" type="email" id="lEmail" placeholder="Email" required>
+        <input class="input" type="password" id="lPass" placeholder="Password" required>
+        <button class="btn btn-primary" type="submit">Login</button>
+      </form>
+      <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+    </div>
+  </div>
+</main>
+
+<div id="toast" class="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const supabaseUrl = 'https://YOUR_PROJECT.supabase.co'; // Replace with your project URL
+  const supabaseKey = 'YOUR_ANON_KEY'; // Replace with your anon/public key
+  const supabase = Supabase.createClient(supabaseUrl, supabaseKey);
+
+  const loginForm = document.getElementById('loginForm');
+
+  loginForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById('lEmail').value.trim();
+    const password = document.getElementById('lPass').value;
+
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: email,
+      password: password
+    });
+
+    if(error){
+      alert("Login failed: " + error.message);
+    } else {
+      alert("Login successful!");
+      // Redirect to dashboard or home page
+      window.location.href = "index.html";
+    }
+  });
+</script>
+</body>
+</html>

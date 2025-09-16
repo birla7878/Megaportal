@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>MegaPortal Pro — Pages</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/social.css" />
+  <link rel="icon" href="assets/img/favicon.png">
+  <style>
+    /* Pages Cards */
+    .pages-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+    .page-item {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .page-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
+    .page-cover {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+    .page-body {
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .page-body h3 {
+      margin: 0 0 6px;
+      font-size: 18px;
+    }
+    .page-body .sub {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 8px;
+    }
+    .page-meta {
+      font-size: 13px;
+      color: #777;
+      margin-bottom: 10px;
+    }
+    .page-tag {
+      display: inline-block;
+      padding: 4px 10px;
+      font-size: 12px;
+      border-radius: 20px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      width: fit-content;
+    }
+    .page-tag.business { background: #e8f5e9; color: #2e7d32; }
+    .page-tag.community { background: #fff3e0; color: #ef6c00; }
+    .page-tag.personal { background: #ede7f6; color: #5e35b1; }
+
+    .page-actions {
+      display: flex;
+      gap: 8px;
+    }
+    .page-actions .btn {
+      flex: 1;
+      cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    .btn-active {
+      background: var(--brand);
+      color: #fff !important;
+    }
+  </style>
+</head>
+<body>
+    <!-- Header -->
+<header class="header">
+  <div class="container navbar">
+    <a class="brand" href="index.html">
+      <div class="brand-badge">MP</div> MegaPortal
+    </a>
+
+    <!-- 🔹 Hamburger Button (Mobile only) -->
+    <button class="mobile-toggle">☰</button>
+
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="matrimonial.html">Matrimonial</a>
+      <a href="social.html">Social</a>
+      <a href="shop.html">Shop</a>
+      <a href="cart.html">Cart <span id="cartCount" class="cart-count">0</span></a>
+      <a href="contact.html">Contact</a>
+      <a class="btn btn-ghost" href="login.html">Login</a>
+      <a class="btn btn-primary" href="signup.html">Sign Up</a>
+    </nav>
+  </div>
+</header>
+
+  <!-- Layout -->
+  <main class="container section">
+    <div class="social-layout">
+
+      <!-- Left Sidebar -->
+<aside class="sidebar-left">
+  <h3>Menu</h3>
+  <ul>
+    <li><a href="social.html" class="active">Feed</a></li>
+    <li><a href="profile.html">Profile</a></li>
+    <li><a href="edit-profile.html">Edit Profile</a></li>
+    <li><a href="favourites.html">Favourites</a></li>
+    <li><a href="groups.html">Groups</a></li>
+    <li><a href="pages.html">Pages</a></li>
+  </ul>
+</aside>
+
+
+      <!-- Center Content -->
+      <div class="center-content">
+        <h2>Pages</h2>
+        <div class="pages-grid">
+
+          <div class="page-item">
+            <img src="https://source.unsplash.com/400x200/?startup" alt="Page" class="page-cover">
+            <div class="page-body">
+              <h3>Startup Hub</h3>
+              <p class="sub">News, insights & networking for entrepreneurs</p>
+              <p class="page-meta"><span class="followers-count">45</span>K followers • Updated 1h ago</p>
+              <span class="page-tag business">Business Page</span>
+              <div class="page-actions">
+                <button class="btn btn-ghost small like-btn">Like</button>
+                <button class="btn btn-primary small follow-btn">Follow</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="page-item">
+            <img src="https://source.unsplash.com/400x200/?community" alt="Page" class="page-cover">
+            <div class="page-body">
+              <h3>Green Earth</h3>
+              <p class="sub">Community for sustainable living & eco tips</p>
+              <p class="page-meta"><span class="followers-count">28</span>K followers • Updated 3h ago</p>
+              <span class="page-tag community">Community Page</span>
+              <div class="page-actions">
+                <button class="btn btn-ghost small like-btn">Like</button>
+                <button class="btn btn-primary small follow-btn">Follow</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="page-item">
+            <img src="https://source.unsplash.com/400x200/?personal" alt="Page" class="page-cover">
+            <div class="page-body">
+              <h3>John's Journal</h3>
+              <p class="sub">Personal blog about travel & lifestyle</p>
+              <p class="page-meta"><span class="followers-count">12</span>K followers • Updated 1d ago</p>
+              <span class="page-tag personal">Personal Page</span>
+              <div class="page-actions">
+                <button class="btn btn-ghost small like-btn">Like</button>
+                <button class="btn btn-primary small follow-btn">Follow</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="page-item">
+            <img src="https://source.unsplash.com/400x200/?restaurant" alt="Page" class="page-cover">
+            <div class="page-body">
+              <h3>Foodies World</h3>
+              <p class="sub">Latest updates from restaurants & chefs</p>
+              <p class="page-meta"><span class="followers-count">32</span>K followers • Updated 5h ago</p>
+              <span class="page-tag business">Business Page</span>
+              <div class="page-actions">
+                <button class="btn btn-ghost small like-btn">Like</button>
+                <button class="btn btn-primary small follow-btn">Follow</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right Sidebar -->
+      <aside class="sidebar-right">
+        <div class="friend-requests">
+          <h3>Friend Requests</h3>
+          <ul>
+            <li>
+              <img src="https://randomuser.me/api/portraits/men/21.jpg"> 
+              <span>Aman</span> 
+              <div>
+                <button class="btn btn-primary small">Accept</button>
+                <button class="btn btn-ghost small">Ignore</button>
+              </div>
+            </li>
+            <li>
+              <img src="https://randomuser.me/api/portraits/women/24.jpg"> 
+              <span>Neha</span> 
+              <div>
+                <button class="btn btn-primary small">Accept</button>
+                <button class="btn btn-ghost small">Ignore</button>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="suggestions">
+          <h3>Suggestions</h3>
+          <ul>
+            <li>
+              <img src="https://randomuser.me/api/portraits/women/12.jpg"> 
+              <span>Aarti</span> 
+              <button class="btn btn-ghost small">Add</button>
+            </li>
+            <li>
+              <img src="https://randomuser.me/api/portraits/men/14.jpg"> 
+              <span>Rajesh</span> 
+              <button class="btn btn-ghost small">Add</button>
+            </li>
+          </ul>
+        </div>
+
+        <div class="chatbox">
+          <h3>Chat</h3>
+          <div class="chat-messages"></div>
+          <input type="text" placeholder="Type a message...">
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer fixed-footer">
+    <div class="container footer-inner">
+      <small>© 2025 MegaPortal Pro</small>
+      <small>Built with ❤️ — LocalStorage demo app</small>
+    </div>
+  </footer>
+
+  <!-- Toggle Script -->
+  <script>
+    // Like button toggle
+    document.querySelectorAll('.like-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (btn.classList.contains('btn-active')) {
+          btn.textContent = 'Like';
+          btn.classList.remove('btn-active');
+        } else {
+          btn.textContent = 'Liked';
+          btn.classList.add('btn-active');
+        }
+      });
+    });
+
+    // Follow button toggle + Followers count update
+    document.querySelectorAll('.follow-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const followersEl = btn.closest('.page-body').querySelector('.followers-count');
+        let count = parseInt(followersEl.textContent);
+
+        if (btn.classList.contains('btn-active')) {
+          btn.textContent = 'Follow';
+          btn.classList.remove('btn-active');
+          followersEl.textContent = count - 1; // decrease followers
+        } else {
+          btn.textContent = 'Following';
+          btn.classList.add('btn-active');
+          followersEl.textContent = count + 1; // increase followers
+        }
+      });
+    });
+  </script>
+</body>
+</html>

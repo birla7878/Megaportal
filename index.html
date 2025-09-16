@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MegaPortal Pro — Home</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="preload" as="image" href="assets/img/hero.jpg">
+<style>
+/* Hero Slideshow Styles */
+.hero {
+    position: relative;
+    overflow: hidden;
+    height: 400px; /* Adjust as needed */
+}
+
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box; /* Important to include padding in the element's total width and height */
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-slide.active {
+    opacity: 1;
+}
+
+/* Example background images (replace with your actual image URLs) */
+.hero-slide:nth-child(1) {
+    background-image: url('https://picsum.photos/id/1015/1200/400');
+}
+
+.hero-slide:nth-child(2) {
+    background-image: url('https://picsum.photos/id/1016/1200/400');
+}
+
+.hero-slide:nth-child(3) {
+    background-image: url('https://picsum.photos/id/1019/1200/400');
+}
+</style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+  <div class="container navbar">
+    <a class="brand" href="index.html">
+      <div class="brand-badge">MP</div> MegaPortal
+    </a>
+
+
+
+    <!-- Mobile Toggle -->
+    <button class="mobile-toggle" aria-label="Toggle Menu">☰</button>
+
+    <!-- Navbar Links -->
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="matrimonial.html">Matrimonial</a>
+      <a href="social.html">Social</a>
+      <a href="shop.html">Shop</a>
+      <a href="cart.html" class="cart-link">Cart <span id="cartCount" class="cart-count">0</span></a>
+      <a href="contact.html">Contact</a>
+
+      <!-- Auth Buttons -->
+      <a class="btn btn-ghost" href="login.html">Login</a>
+      <a class="btn btn-primary" href="signup.html">Sign Up</a>
+    </nav>
+  </div>
+</header>
+
+
+  <!-- Hero Banner -->
+<section class="hero" id="hero">
+  <div class="hero-slide active">
+    <h1 style="font-size:48px; margin-bottom:12px;">Find Your Perfect Match</h1>
+    <p style="font-size:20px;">Trusted by thousands of families • Safe • Secure</p>
+    <a href="signup.html" class="btn btn-primary" style="margin-top:20px;">Get Started</a>
+  </div>
+  <div class="hero-slide">
+    <h1 style="font-size:48px; margin-bottom:12px;">Stay Connected with Friends</h1>
+    <p style="font-size:20px;">Share updates, like posts, and build meaningful connections</p>
+    <a href="social.html" class="btn btn-primary" style="margin-top:20px;">Go to Social</a>
+  </div>
+  <div class="hero-slide">
+    <h1 style="font-size:48px; margin-bottom:12px;">Your Wedding Shopping Hub</h1>
+    <p style="font-size:20px;">Shop curated outfits, jewellery, and gifts for every occasion</p>
+    <a href="shop.html" class="btn btn-primary" style="margin-top:20px;">Shop Now</a>
+  </div>
+</section>
+
+
+
+ <!-- Highlights -->
+<section class="container section">
+  <div class="section-head">
+    <h2>Highlights</h2>
+    <div class="sub">Clean design • Fast • Secure feel</div>
+  </div>
+  <div class="grid grid-3">
+
+    <!-- Matrimonial Slideshow -->
+    <article class="card">
+      <div class="slideshow">
+  <img src="https://picsum.photos/id/1018/1200/600" class="active">
+  <img src="https://picsum.photos/id/1025/1200/600">
+  <img src="https://picsum.photos/id/1039/1200/600">
+</div>
+
+      <div class="card-body">
+        <h3>Matrimonial</h3>
+        <p class="sub">Elegant profile cards with live filters & tags.</p>
+      </div>
+    </article>
+
+    <!-- Social Slideshow -->
+    <article class="card">
+      <div class="slideshow">
+        <img src="https://picsum.photos/id/1025/800/500" class="active">
+        <img src="https://picsum.photos/id/1020/800/500">
+        <img src="https://picsum.photos/id/1035/800/500">
+      </div>
+      <div class="card-body">
+        <h3>Social Feed</h3>
+        <p class="sub">Like, comment & save — persists via localStorage.</p>
+      </div>
+    </article>
+
+    <!-- Shopping Slideshow -->
+    <article class="card">
+      <div class="slideshow">
+        <img src="https://picsum.photos/id/1040/800/500" class="active">
+        <img src="https://picsum.photos/id/1045/800/500">
+        <img src="https://picsum.photos/id/1050/800/500">
+      </div>
+      <div class="card-body">
+        <h3>Shopping</h3>
+        <p class="sub">Search, sort & cart with a clean responsive grid.</p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+
+<!-- How It Works -->
+<section class="container section howitworks">
+  <div class="section-head">
+    <h2>How It Works</h2>
+    <div class="sub">Simple steps to find your perfect match</div>
+  </div>
+  <div class="grid grid-4">
+    <article class="card center">
+      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile" style="width:70px; margin-bottom:12px;">
+      <h3>Create Profile</h3>
+      <p class="sub">Sign up and add your details</p>
+    </article>
+    <article class="card center">
+      <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Matches" style="width:70px; margin-bottom:12px;">
+      <h3>Browse Matches</h3>
+      <p class="sub">Search with filters & interests</p>
+    </article>
+    <article class="card center">
+      <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="Connect" style="width:70px; margin-bottom:12px;">
+      <h3>Connect</h3>
+      <p class="sub">Send interest & messages</p>
+    </article>
+    <article class="card center">
+      <img src="https://cdn-icons-png.flaticon.com/512/633/633652.png" alt="Marriage" style="width:70px; margin-bottom:12px;">
+      <h3>Get Married</h3>
+      <p class="sub">Begin your happy journey</p>
+    </article>
+  </div>
+</section>
+
+
+  <!-- Testimonials -->
+<section class="container section testimonials-section">
+  <div class="section-head">
+    <h2>Happy Stories</h2>
+    <div class="sub">What our members say</div>
+  </div>
+  <div class="grid grid-2">
+    <article class="card center" style="padding:20px;">
+      <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" style="width:80px; height:80px; border-radius:50%; margin-bottom:10px;">
+      <p>"We met through this platform and tied the knot last year. Forever grateful!"</p>
+      <div class="stars">★★★★★</div>
+      <strong>- Rohan & Anjali</strong>
+    </article>
+    <article class="card center" style="padding:20px;">
+      <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User" style="width:80px; height:80px; border-radius:50%; margin-bottom:10px;">
+      <p>"Safe, easy to use, and lots of options. Highly recommended."</p>
+      <div class="stars">★★★★★</div>
+      <strong>- Meera</strong>
+    </article>
+    <article class="card center" style="padding:20px;">
+      <img src="https://randomuser.me/api/portraits/men/58.jpg" alt="User" style="width:80px; height:80px; border-radius:50%; margin-bottom:10px;">
+      <p>"I found my life partner here within months of joining."</p>
+      <div class="stars">★★★★☆</div>
+      <strong>- Vikram</strong>
+    </article>
+    <article class="card center" style="padding:20px;">
+      <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="User" style="width:80px; height:80px; border-radius:50%; margin-bottom:10px;">
+      <p>"Amazing experience! The design is clean and easy to use."</p>
+      <div class="stars">★★★★★</div>
+      <strong>- Nisha</strong>
+    </article>
+  </div>
+</section>
+
+<!-- Why Choose us -->
+<section class="why-us container section">
+  <div class="section-head">
+    <h2>Why Choose MegaPortal?</h2>
+    <div class="sub">Trusted by thousands of families</div>
+  </div>
+  <div class="grid grid-4">
+    <article class="card center">
+      <img src="https://cdn-icons-png.flaticon.com/512/1041/1041916.png" style="width:60px; margin-bottom:12px;">
+      <h3>Verified Profiles</h3>
+      <p class="sub">100% genuine and safe profiles</p>
+    </article>
+    <article class="card center">
+      <img src="https://cdn-icons-png.flaticon.com/512/709/709496.png" style="width:60px; margin-bottom:12px;">
+      <h3>Advanced Filters</h3>
+      <p class="sub">Find matches by interests & preferences</p>
+    </article>
+    <article class="card center">
+      <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" style="width:60px; margin-bottom:12px;">
+      <h3>Easy Connect</h3>
+      <p class="sub">Send requests & chat securely</p>
+    </article>
+    <article class="card center">
+      <img src="https://cdn-icons-png.flaticon.com/512/633/633652.png" style="width:60px; margin-bottom:12px;">
+      <h3>Success Stories</h3>
+      <p class="sub">Thousands of happy couples</p>
+    </article>
+  </div>
+</section>
+
+<!-- Membership Plans -->
+<section class="plans container section">
+  <div class="section-head">
+    <h2>Membership Plans</h2>
+    <div class="sub">Pick a plan that fits your journey</div>
+  </div>
+
+  <div class="grid grid-3">
+
+    <!-- Free Plan -->
+    <article class="card plan-card">
+      <div class="plan-header">
+        <h3>Free</h3>
+        <p class="sub">Basic access to explore</p>
+      </div>
+      <h2 class="price">₹0<span>/mo</span></h2>
+      <ul class="features">
+        <li>✔ Create Profile</li>
+        <li>✔ Browse Matches</li>
+        <li>✘ Limited Messages</li>
+        <li>✘ Premium Filters</li>
+      </ul>
+      <a href="signup.html" class="btn btn-primary">Start Free</a>
+    </article>
+
+    <!-- Premium Plan -->
+    <article class="card plan-card highlight">
+      <div class="plan-header">
+        <h3>Premium <span class="badge">Popular</span></h3>
+        <p class="sub">For serious match seekers</p>
+      </div>
+      <h2 class="price">₹999<span>/mo</span></h2>
+      <ul class="features">
+        <li>✔ Unlimited Messages</li>
+        <li>✔ Advanced Filters</li>
+        <li>✔ Profile Boost</li>
+        <li>✔ Priority Support</li>
+      </ul>
+      <a href="signup.html" class="btn btn-primary">Upgrade</a>
+    </article>
+
+    <!-- Elite Plan -->
+    <article class="card plan-card">
+      <div class="plan-header">
+        <h3>Elite</h3>
+        <p class="sub">Exclusive matchmaking</p>
+      </div>
+      <h2 class="price">₹4999<span>/mo</span></h2>
+      <ul class="features">
+        <li>✔ Dedicated Relationship Manager</li>
+        <li>✔ Verified Profiles Only</li>
+        <li>✔ Priority Listing</li>
+        <li>✔ Personalized Matchmaking</li>
+      </ul>
+      <a href="signup.html" class="btn btn-primary">Join Elite</a>
+    </article>
+
+  </div>
+</section>
+
+
+<!-- Call to Action -->
+<section class="cta">
+  <div class="cta-overlay">
+    <h2>✨ Start Your Journey Today ✨</h2>
+    <p>Create your free profile and connect with verified matches.</p>
+    <a href="signup.html" class="btn btn-primary">Join Now</a>
+  </div>
+</section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <small>© 2025 MegaPortal Pro</small>
+      <small>Built with ❤️ — LocalStorage demo app</small>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script>
+// JavaScript for Hero Slideshow
+const slides = document.querySelectorAll('.hero-slide');
+let currentSlide = 0;
+
+function showSlide(index) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    slides[index].classList.add('active');
+}
+
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+}
+
+// Change slide every 5 seconds (adjust as needed)
+setInterval(nextSlide, 5000);
+</script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
+

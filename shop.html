@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>MegaPortal Pro — Shop</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" href="assets/img/favicon.png">
+
+</head>
+<body>
+    <!-- Header -->
+<header class="header">
+  <div class="container navbar">
+    <a class="brand" href="index.html">
+      <div class="brand-badge">MP</div> MegaPortal
+    </a>
+
+    <!-- 🔹 Hamburger Button (Mobile only) -->
+    <button class="mobile-toggle">☰</button>
+
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="matrimonial.html">Matrimonial</a>
+      <a href="social.html">Social</a>
+      <a href="shop.html">Shop</a>
+      <a href="cart.html">Cart <span id="cartCount" class="cart-count">0</span></a>
+      <a href="contact.html">Contact</a>
+      <a class="btn btn-ghost" href="login.html">Login</a>
+      <a class="btn btn-primary" href="signup.html">Sign Up</a>
+    </nav>
+  </div>
+</header>
+
+
+  <main class="container section">
+    <div class="section-head">
+      <h2>Shop</h2>
+      <div class="sub">Wedding specials & lifestyle picks</div>
+    </div>
+
+    <div class="controls">
+      <input type="text" id="q" placeholder="Search products…">
+      <select id="cat">
+        <option value="">Category</option><option>Clothing</option><option>Jewellery</option><option>Accessories</option>
+      </select>
+      <select id="sort">
+        <option value="">Sort by</option><option value="lth">Price: Low to High</option><option value="htl">Price: High to Low</option><option value="new">Newest</option><option value="pop">Popular</option>
+      </select>
+      <button class="btn btn-ghost" id="applyShop">Filter</button>
+    </div>
+
+    <div class="boxed">
+  <div class="grid grid-5" style="margin-top:18px" id="shopGrid"></div>
+</div>
+
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <small>© 2025 MegaPortal Pro</small>
+      <small>Built with ❤️ — LocalStorage demo app</small>
+    </div>
+  </footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="assets/js/app.js"></script>
+<script src="assets/js/header.js"></script>
+</body>
+</html>

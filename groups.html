@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>MegaPortal Pro — Groups</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/social.css" />
+  <link rel="icon" href="assets/img/favicon.png">
+  <style>
+    /* Group Cards */
+    .groups-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+    .group-item {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .group-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
+    .group-cover {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+    .group-body {
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .group-body h3 {
+      margin: 0 0 6px;
+      font-size: 18px;
+    }
+    .group-body .sub {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 8px;
+    }
+    .group-meta {
+      font-size: 13px;
+      color: #777;
+      margin-bottom: 10px;
+    }
+    .group-tag {
+      display: inline-block;
+      padding: 4px 10px;
+      font-size: 12px;
+      border-radius: 20px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      width: fit-content;
+    }
+    .group-tag.public {
+      background: #e1f5fe;
+      color: #0288d1;
+    }
+    .group-tag.private {
+      background: #fce4ec;
+      color: #c2185b;
+    }
+    .join-btn {
+      align-self: flex-start;
+    }
+  </style>
+</head>
+<body>
+    <!-- Header -->
+<header class="header">
+  <div class="container navbar">
+    <a class="brand" href="index.html">
+      <div class="brand-badge">MP</div> MegaPortal
+    </a>
+
+    <!-- 🔹 Hamburger Button (Mobile only) -->
+    <button class="mobile-toggle">☰</button>
+
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="matrimonial.html">Matrimonial</a>
+      <a href="social.html">Social</a>
+      <a href="shop.html">Shop</a>
+      <a href="cart.html">Cart <span id="cartCount" class="cart-count">0</span></a>
+      <a href="contact.html">Contact</a>
+      <a class="btn btn-ghost" href="login.html">Login</a>
+      <a class="btn btn-primary" href="signup.html">Sign Up</a>
+    </nav>
+  </div>
+</header>
+  <!-- Layout -->
+  <main class="container section">
+    <div class="social-layout">
+
+      <!-- Left Sidebar -->
+<aside class="sidebar-left">
+  <h3>Menu</h3>
+  <ul>
+    <li><a href="social.html" class="active">Feed</a></li>
+    <li><a href="profile.html">Profile</a></li>
+    <li><a href="edit-profile.html">Edit Profile</a></li>
+    <li><a href="favourites.html">Favourites</a></li>
+    <li><a href="groups.html">Groups</a></li>
+    <li><a href="pages.html">Pages</a></li>
+  </ul>
+</aside>
+
+
+      <!-- Center Content -->
+      <div class="center-content">
+        <h2>Groups</h2>
+        <div class="groups-grid">
+
+          <div class="group-item">
+            <img src="https://source.unsplash.com/400x200/?technology" alt="Group" class="group-cover">
+            <div class="group-body">
+              <h3>Tech Enthusiasts</h3>
+              <p class="sub">For people who love coding & gadgets</p>
+              <p class="group-meta">12.5K members • Active 2h ago</p>
+              <span class="group-tag public">Public Group</span>
+              <button class="btn btn-primary small join-btn">Join</button>
+            </div>
+          </div>
+
+          <div class="group-item">
+            <img src="https://source.unsplash.com/400x200/?fitness" alt="Group" class="group-cover">
+            <div class="group-body">
+              <h3>Fitness Freaks</h3>
+              <p class="sub">Workout, nutrition & lifestyle tips</p>
+              <p class="group-meta">8.3K members • Active 5m ago</p>
+              <span class="group-tag.private">Private Group</span>
+              <button class="btn btn-primary small join-btn">Join</button>
+            </div>
+          </div>
+
+          <div class="group-item">
+            <img src="https://source.unsplash.com/400x200/?travel" alt="Group" class="group-cover">
+            <div class="group-body">
+              <h3>Travel Buddies</h3>
+              <p class="sub">Share your adventures & tips</p>
+              <p class="group-meta">22.1K members • Active 1d ago</p>
+              <span class="group-tag public">Public Group</span>
+              <button class="btn btn-primary small join-btn">Join</button>
+            </div>
+          </div>
+
+          <div class="group-item">
+            <img src="https://source.unsplash.com/400x200/?food" alt="Group" class="group-cover">
+            <div class="group-body">
+              <h3>Food Lovers</h3>
+              <p class="sub">Recipes, restaurants & more</p>
+              <p class="group-meta">15.7K members • Active 3h ago</p>
+              <span class="group-tag.private">Private Group</span>
+              <button class="btn btn-primary small join-btn">Join</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right Sidebar -->
+      <aside class="sidebar-right">
+        <!-- Friend Requests -->
+        <div class="friend-requests">
+          <h3>Friend Requests</h3>
+          <ul>
+            <li>
+              <img src="https://randomuser.me/api/portraits/men/21.jpg"> 
+              <span>Aman</span> 
+              <div>
+                <button class="btn btn-primary small">Accept</button>
+                <button class="btn btn-ghost small">Ignore</button>
+              </div>
+            </li>
+            <li>
+              <img src="https://randomuser.me/api/portraits/women/24.jpg"> 
+              <span>Neha</span> 
+              <div>
+                <button class="btn btn-primary small">Accept</button>
+                <button class="btn btn-ghost small">Ignore</button>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Suggestions -->
+        <div class="suggestions">
+          <h3>Suggestions</h3>
+          <ul>
+            <li>
+              <img src="https://randomuser.me/api/portraits/women/12.jpg"> 
+              <span>Aarti</span> 
+              <button class="btn btn-ghost small">Add</button>
+            </li>
+            <li>
+              <img src="https://randomuser.me/api/portraits/men/14.jpg"> 
+              <span>Rajesh</span> 
+              <button class="btn btn-ghost small">Add</button>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Chatbox -->
+        <div class="chatbox">
+          <h3>Chat</h3>
+          <div class="chat-messages"></div>
+          <input type="text" placeholder="Type a message...">
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer fixed-footer">
+    <div class="container footer-inner">
+      <small>© 2025 MegaPortal Pro</small>
+      <small>Built with ❤️ — LocalStorage demo app</small>
+    </div>
+  </footer>
+</body>
+</html>

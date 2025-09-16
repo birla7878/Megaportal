@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>MegaPortal Pro — Matrimonial</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" href="assets/img/favicon.png">
+</head>
+<body class="matrimonial-bg">
+    <!-- Header -->
+<header class="header">
+  <div class="container navbar">
+    <a class="brand" href="index.html">
+      <div class="brand-badge">MP</div> MegaPortal
+    </a>
+
+    <!-- 🔹 Hamburger Button (Mobile only) -->
+    <button class="mobile-toggle">☰</button>
+
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="matrimonial.html">Matrimonial</a>
+      <a href="social.html">Social</a>
+      <a href="shop.html">Shop</a>
+      <a href="cart.html">Cart <span id="cartCount" class="cart-count">0</span></a>
+      <a href="contact.html">Contact</a>
+      <a class="btn btn-ghost" href="login.html">Login</a>
+      <a class="btn btn-primary" href="signup.html">Sign Up</a>
+    </nav>
+  </div>
+</header>
+
+  <main class="matrimonial-content">
+    <div class="container section">
+    <div class="section-head">
+      <h2>Matrimonial Profiles</h2>
+      <div class="sub">Use filters to refine your search</div>
+    </div>
+
+    <form class="filters" id="matFilters">
+      <select id="fLooking">
+        <option value="">Looking for</option>
+        <option value="Bride">Bride</option>
+        <option value="Groom">Groom</option>
+      </select>
+      <input type="number" id="fMinAge" placeholder="Min Age" min="18" max="70">
+      <input type="number" id="fMaxAge" placeholder="Max Age" min="18" max="70">
+      <select id="fReligion">
+        <option value="">Religion</option><option>Hindu</option><option>Muslim</option><option>Sikh</option><option>Christian</option>
+      </select>
+      <input type="text" id="fCity" placeholder="City">
+      <select id="fEdu">
+        <option value="">Education</option><option>B.Tech</option><option>MBA</option><option>MBBS</option><option>Other</option>
+      </select>
+      <button type="button" class="btn btn-primary" id="applyMat">Apply</button>
+      <button type="reset" class="btn btn-ghost" id="resetMat">Reset</button>
+    </form>
+
+    <!-- Boxed Profiles Grid (only once) -->
+    <div class="boxed">
+      <div class="grid grid-4" style="margin-top:18px" id="profilesGrid"></div>
+    </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <small>© 2025 MegaPortal Pro</small>
+      <small>Built with ❤️ — LocalStorage demo app</small>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/header.js"></script>
+</body>
+</html>

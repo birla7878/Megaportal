@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>MegaPortal Pro — Favourites</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/social.css" />
+  <link rel="icon" href="assets/img/favicon.png">
+</head>
+<body>
+    <!-- Header -->
+<header class="header">
+  <div class="container navbar">
+    <a class="brand" href="index.html">
+      <div class="brand-badge">MP</div> MegaPortal
+    </a>
+
+    <!-- 🔹 Hamburger Button (Mobile only) -->
+    <button class="mobile-toggle">☰</button>
+
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="matrimonial.html">Matrimonial</a>
+      <a href="social.html">Social</a>
+      <a href="shop.html">Shop</a>
+      <a href="cart.html">Cart <span id="cartCount" class="cart-count">0</span></a>
+      <a href="contact.html">Contact</a>
+      <a class="btn btn-ghost" href="login.html">Login</a>
+      <a class="btn btn-primary" href="signup.html">Sign Up</a>
+    </nav>
+  </div>
+</header>
+
+  <!-- Layout -->
+  <main class="container section">
+    <div class="social-layout">
+
+      <!-- Left Sidebar -->
+<aside class="sidebar-left">
+  <h3>Menu</h3>
+  <ul>
+    <li><a href="social.html" class="active">Feed</a></li>
+    <li><a href="profile.html">Profile</a></li>
+    <li><a href="edit-profile.html">Edit Profile</a></li>
+    <li><a href="favourites.html">Favourites</a></li>
+    <li><a href="groups.html">Groups</a></li>
+    <li><a href="pages.html">Pages</a></li>
+  </ul>
+</aside>
+
+
+      
+      <!-- Center Content -->
+<div class="center-content">
+  <div class="panel">
+    <h2>My Favourites ❤️</h2>
+    <p>Here are the people, posts, and pages you’ve saved to your favourites.</p>
+
+    <!-- Grid for favourites -->
+    <div class="favourites-grid">
+      <div class="fav-card">
+        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User">
+        <h4>Simran</h4>
+        <small>Saved Profile</small>
+        <div class="fav-actions">
+          <button class="btn btn-primary small">Follow</button>
+          <button class="btn btn-ghost small">Remove</button>
+        </div>
+      </div>
+
+      <div class="fav-card">
+        <img src="https://randomuser.me/api/portraits/men/43.jpg" alt="User">
+        <h4>Rahul</h4>
+        <small>Saved Post</small>
+        <div class="fav-actions">
+          <button class="btn btn-primary small">Follow</button>
+          <button class="btn btn-ghost small">Remove</button>
+        </div>
+      </div>
+
+      <div class="fav-card">
+        <img src="https://randomuser.me/api/portraits/women/75.jpg" alt="User">
+        <h4>Kavya’s Fashion Page</h4>
+        <small>Saved Page</small>
+        <div class="fav-actions">
+          <button class="btn btn-primary small">Follow</button>
+          <button class="btn btn-ghost small">Remove</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+      <!-- Right Sidebar -->
+      <aside class="sidebar-right">
+
+        <!-- Friend Requests -->
+        <div class="friend-requests">
+          <h3>Friend Requests</h3>
+          <ul>
+            <li>
+              <img src="https://randomuser.me/api/portraits/men/21.jpg"> 
+              <span>Aman</span> 
+              <div>
+                <button class="btn btn-primary small">Accept</button>
+                <button class="btn btn-ghost small">Ignore</button>
+              </div>
+            </li>
+            <li>
+              <img src="https://randomuser.me/api/portraits/women/24.jpg"> 
+              <span>Neha</span> 
+              <div>
+                <button class="btn btn-primary small">Accept</button>
+                <button class="btn btn-ghost small">Ignore</button>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Suggestions -->
+        <div class="suggestions">
+          <h3>Suggestions</h3>
+          <ul>
+            <li>
+              <img src="https://randomuser.me/api/portraits/women/12.jpg"> 
+              <span>Aarti</span> 
+              <button class="btn btn-ghost small">Add</button>
+            </li>
+            <li>
+              <img src="https://randomuser.me/api/portraits/men/14.jpg"> 
+              <span>Rajesh</span> 
+              <button class="btn btn-ghost small">Add</button>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Chatbox -->
+        <div class="chatbox">
+          <h3>Chat</h3>
+          <div class="chat-messages"></div>
+          <input type="text" placeholder="Type a message...">
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer fixed-footer">
+    <div class="container footer-inner">
+      <small>© 2025 MegaPortal Pro</small>
+      <small>Built with ❤️ — LocalStorage demo app</small>
+    </div>
+  </footer>
+</body>
+</html>
