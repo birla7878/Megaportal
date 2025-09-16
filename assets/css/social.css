@@ -1,0 +1,225 @@
+/* 🔹 Stories Section */
+.stories {
+  display: flex;
+  gap: 14px;
+  margin: 20px auto;
+  padding: 10px;
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+.stories::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.story {
+  flex: 0 0 auto;
+  width: 80px;
+  text-align: center;
+}
+.story img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 6px;
+  border: 3px solid var(--brand);
+}
+.story span {
+  display: block;
+  font-size: 13px;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* 🔹 Desktop view → center align */
+@media (min-width: 768px) {
+  .stories {
+    justify-content: center;
+    overflow-x: hidden; /* center, no side scroll */
+  }
+}
+
+/* 🔹 Mobile view → left align & scroll */
+@media (max-width: 767px) {
+  .stories {
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+}
+
+
+/* ---------- Friend Requests ---------- */
+.friend-requests h3 {
+  margin: 0 0 12px;
+  font-size: 18px;
+}
+.friend-requests ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.friend-requests ul li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  gap: 8px;
+}
+.friend-requests ul li img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+.friend-requests ul li span {
+  flex: 1;
+  font-weight: 600;
+}
+.friend-requests ul li div {
+  display: flex;
+  gap: 6px;
+}
+
+/* Add Story Circle */
+.story.add-story {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+}
+.story.add-story .add-btn {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.story.add-story .add-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+.story.add-story span {
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.feed {
+  margin-bottom: 80px; /* ताकि feed footer के नीचे न छिपे */
+}
+
+/* Favourites Grid */
+.favourites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.fav-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 14px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fav-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.fav-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.fav-card h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.fav-card small {
+  display: block;
+  margin-bottom: 8px;
+  color: #666;
+}
+
+/* Favourites Actions */
+.fav-actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+.fav-actions button {
+  flex: 1;
+  padding: 6px 0;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.group-card {
+  overflow: hidden;
+}
+.group-cover {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+.following {
+  background: #e5e7eb !important;
+  color: #111827 !important;
+  border: 1px solid #d1d5db !important;
+}
+.following:hover {
+  background: #d1d5db !important;
+}
+
+/* Feed post profile images */
+.post-header img,
+.post-head .ava img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;   /* Round profile pic */
+  object-fit: cover;    /* Image crop properly */
+  margin-right: 10px;
+}
+
+/* Feed post & comment profile pics round */
+.post-header img,
+.post-head .ava img,
+.comments img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;   /* Round shape */
+  object-fit: cover;    /* Proper crop */
+  margin-right: 8px;
+}
