@@ -100,7 +100,7 @@
 </main>
 
 <div id="toast" class="toast"></div>
-<!--
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
   const supabaseUrl = 'https://oixequtjnhlnarcuycca.supabase.co'; // Replace with your project URL
@@ -134,44 +134,5 @@
 
 
 </script>
--->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-  const supabaseUrl = 'https://oixequtjnhlnarcuycca.supabase.co';
-  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9peGVxdXRqbmhsbmFyY3V5Y2NhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgwMjMwNTUsImV4cCI6MjA3MzU5OTA1NX0.XcH-fUgnAm-yHn-ZIMDtuHNqyckwsxjFQk2MGre92S8';
-  const supabase = supabase.createClient(supabaseUrl, supabaseKey);
-
-  const loginForm = document.getElementById('loginForm');
-
-  loginForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const email = document.getElementById('lEmail').value.trim();
-    const password = document.getElementById('lPass').value;
-
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password
-    });
-
-    if (error) {
-      alert("Login failed: " + error.message);
-    } else {
-      alert("Login successful!");
-      window.location.href = "index.html"; 
-    }
-  });
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="assets/js/auth.js"></script>
-
-  // Auto redirect if already logged in
-  supabase.auth.getSession().then(({ data }) => {
-    if (data.session) {
-      window.location.href = "index.html";
-    }
-  });
-</script>
-
 </body>
 </html>

@@ -105,7 +105,7 @@
 <div id="toast" class="toast"></div>
 
 <!-- Supabase + JS -->
-<!--<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
   const supabaseUrl = 'https://oixequtjnhlnarcuycca.supabase.co'; // Replace with your project URL
   const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9peGVxdXRqbmhsbmFyY3V5Y2NhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgwMjMwNTUsImV4cCI6MjA3MzU5OTA1NX0.XcH-fUgnAm-yHn-ZIMDtuHNqyckwsxjFQk2MGre92S8'; // Replace with your anon/public key
@@ -146,53 +146,6 @@
 <script src="assets/js/auth.js"></script>
 
 
-</script>-->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-  const supabaseUrl = 'https://oixequtjnhlnarcuycca.supabase.co';
-  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9peGVxdXRqbmhsbmFyY3V5Y2NhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgwMjMwNTUsImV4cCI6MjA3MzU5OTA1NX0.XcH-fUgnAm-yHn-ZIMDtuHNqyckwsxjFQk2MGre92S8'; 
-  const supabase = supabase.createClient(supabaseUrl, supabaseKey);
-
-  const signupForm = document.getElementById('signupForm');
-
-  signupForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const name = document.getElementById('sName').value.trim();
-    const email = document.getElementById('sEmail').value.trim();
-    const password = document.getElementById('sPass').value;
-    const confirmPassword = document.getElementById('sCPass').value;
-
-    if (password !== confirmPassword) {
-      alert("Passwords do not match!");
-      return;
-    }
-
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: { data: { full_name: name } }
-    });
-
-    if (error) {
-      alert("Error: " + error.message);
-    } else {
-      alert("Signup successful! Please check your email to confirm.");
-      // after signup, redirect to verify page
-      window.location.href = "verify.html";
-    }
-  });
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="assets/js/auth.js"></script>
-
-  // Auto redirect after confirmation
-  supabase.auth.onAuthStateChange(async (event, session) => {
-    if (event === "SIGNED_IN") {
-      window.location.href = "index.html"; // redirect after email confirm
-    }
-  });
 </script>
-
 </body>
 </html>
