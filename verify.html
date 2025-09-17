@@ -38,24 +38,28 @@
     import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm"
 
     const SUPABASE_URL = "https://oixequtjnhlnarcuycca.supabase.co"; 
-    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9peGVxdXRqbmhsbmFyY3V5Y2NhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgwMjMwNTUsImV4cCI6MjA3MzU5OTA1NX0.XcH-fUgnAm-yHn-ZIMDtuHNqyckwsxjFQk2MGre92S8"; // 🚨 यहां अपनी real anon key डालें
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9peGVxdXRqbmhsbmFyY3V5Y2NhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgwMjMwNTUsImV4cCI6MjA3MzU5OTA1NX0.XcH-fUgnAm-yHn-ZIMDtuHNqyckwsxjFQk2MGre92S8"; 
     const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
     async function verifyUser() {
-      // Supabase से verification URL को handle करो
-      const { data, error } = await supabase.auth.getSessionFromUrl({ storeSession: true });
-      
-      if (error) {
-        document.querySelector(".loading").textContent = "❌ Verification failed!";
-        console.error("Verification error:", error.message);
-        return;
-      }
+      try {
+        const { data, error } = await supabase.auth.exchangeCodeForSession(window.location.href);
+        
+        if (error) {
+          document.querySelector(".loading").textContent = "❌ Verification failed!";
+          console.error("Verification error:", error.message);
+          return;
+        }
 
-      // ✅ Successfully verified
-      document.querySelector(".loading").textContent = "✅ Verified! Redirecting...";
-      setTimeout(() => {
-        window.location.href = "https://birla7878.github.io/Megaportal/index.html";
-      }, 1500);
+        // ✅ Successfully verified
+        document.querySelector(".loading").textContent = "✅ Verified! Redirecting...";
+        setTimeout(() => {
+          window.location.href = "https://birla7878.github.io/Megaportal/index.html";
+        }, 1500);
+      } catch (err) {
+        console.error("Unexpected error:", err);
+        document.querySelector(".loading").textContent = "⚠️ Something went wrong.";
+      }
     }
 
     verifyUser();
