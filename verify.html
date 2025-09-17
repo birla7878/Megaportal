@@ -3,69 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Verifying Account...</title>
-  <script src="https://unpkg.com/@supabase/supabase-js"></script>
+  <title>Email Verification</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f8f9fa;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
+      text-align: center;
+      padding: 50px;
+      background: #f9f9f9;
     }
     .box {
-      background: #fff;
+      max-width: 400px;
+      margin: auto;
+      background: white;
       padding: 30px;
       border-radius: 10px;
-      text-align: center;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      max-width: 400px;
     }
-    .loading {
-      font-size: 18px;
-      color: #333;
-    }
+    h2 { color: #e60000; }
   </style>
 </head>
 <body>
   <div class="box">
-    <h2>🔒 Verifying your account...</h2>
-    <p class="loading">Please wait, you will be redirected automatically.</p>
+    <h2 id="status">Verifying...</h2>
+    <p id="message"></p>
   </div>
 
-  <script type="module">
-    import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm"
+  <script>
+    // Read token from URL
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get("token");
 
-    const SUPABASE_URL = "https://oixequtjnhlnarcuycca.supabase.co";
-    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9peGVxdXRqbmhsbmFyY3V5Y2NhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgwMjMwNTUsImV4cCI6MjA3MzU5OTA1NX0.XcH-fUgnAm-yHn-ZIMDtuHNqyckwsxjFQk2MGre92S8"; 
-    const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+    const statusEl = document.getElementById("status");
+    const msgEl = document.getElementById("message");
 
-    async function verifyUser() {
-      try {
-        console.log("📩 Checking verification URL...");
-        const { data, error } = await supabase.auth.exchangeCodeForSession(window.location.href);
-
-        if (error) {
-          console.error("❌ Verification error:", error.message);
-          document.querySelector(".loading").textContent = "❌ Verification failed: " + error.message;
-          return;
-        }
-
-        console.log("✅ Verification successful:", data);
-        document.querySelector(".loading").textContent = "✅ Verified! Redirecting...";
-        setTimeout(() => {
-          window.location.href = "https://birla7878.github.io/Megaportal/index.html";
-        }, 1500);
-
-      } catch (err) {
-        console.error("⚠️ Unexpected error:", err);
-        document.querySelector(".loading").textContent = "⚠️ Unexpected error. Check console.";
+    if (token) {
+      // Normally yaha backend API call hota hai verify karne ke liye
+      // Demo ke liye token "12345" ko valid maana gaya hai
+      if (token === "12345") {
+        statusEl.innerText = "✅ Email Verified!";
+        msgEl.innerText = "Thank you for confirming your email. You can now log in.";
+      } else {
+        statusEl.innerText = "❌ Invalid or Expired Link";
+        msgEl.innerText = "Please request a new verification email.";
       }
+    } else {
+      statusEl.innerText = "❌ Invalid Request";
+      msgEl.innerText = "No verification token found.";
     }
-
-    verifyUser();
   </script>
 </body>
 </html>
