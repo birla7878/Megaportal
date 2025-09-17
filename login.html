@@ -2,137 +2,100 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Login - MegaPortal</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
   <script src="https://unpkg.com/@supabase/supabase-js"></script>
   <style>
     body {
-      background: #f5f5f5;
-      font-family: 'Arial', sans-serif;
-    }
-    .boxed {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 90vh;
+      height: 100vh;
+      margin: 0;
     }
-    .card {
-      max-width: 500px;
-      width: 100%;
-      padding: 24px;
+    .login-box {
       background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      padding: 25px;
+      border-radius: 10px;
+      width: 320px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       text-align: center;
     }
-    .card h2 {
-      margin-bottom: 16px;
+    .login-box h2 {
+      margin-bottom: 20px;
+      color: #333;
     }
-    .input {
+    .login-box input {
       width: 100%;
-      padding: 12px;
-      margin: 8px 0;
-      border-radius: 8px;
+      padding: 10px;
+      margin: 10px 0;
       border: 1px solid #ccc;
-      font-size: 14px;
+      border-radius: 6px;
     }
-    .btn {
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 15px;
-    }
-    .btn-primary {
-      background: #e53935;
-      color: #fff;
+    .login-box button {
       width: 100%;
-      margin-top: 12px;
-      transition: background 0.3s;
+      padding: 10px;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
     }
-    .btn-primary:hover {
-      background: #d32f2f;
+    .login-box button:hover {
+      background: #1e7e34;
     }
-    p {
+    .message {
+      margin-top: 15px;
+      color: green;
       font-size: 14px;
-      margin-top: 14px;
     }
-    p a {
-      color: #e53935;
-      text-decoration: none;
+    .error {
+      margin-top: 15px;
+      color: red;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
-<header class="header">
-  <div class="container navbar">
-    <a class="brand" href="index.html">
-      <div class="brand-badge">MP</div> MegaPortal
-    </a>
-    <button class="mobile-toggle">☰</button>
-    <nav class="nav">
-      <a href="index.html">Home</a>
-      <a href="matrimonial.html">Matrimonial</a>
-      <a href="social.html">Social</a>
-      <a href="shop.html">Shop</a>
-      <a href="cart.html">Cart <span id="cartCount" class="cart-count">0</span></a>
-      <a href="contact.html">Contact</a>
-      <a class="btn btn-ghost" href="login.html">Login</a>
-      <a class="btn btn-primary" href="signup.html">Sign Up</a>
-    </nav>
+  <div class="login-box">
+    <h2>Login</h2>
+    <input type="email" id="email" placeholder="Enter your email" required>
+    <input type="password" id="password" placeholder="Enter your password" required>
+    <button onclick="login()">Login</button>
+    <p id="msg" class="message"></p>
+    <p id="err" class="error"></p>
   </div>
-</header>
 
-<main class="container section">
-  <div class="boxed">
-    <div class="card">
-      <h2>Login</h2>
-      <form id="loginForm">
-        <input class="input" type="email" id="lEmail" placeholder="Email" required>
-        <input class="input" type="password" id="lPass" placeholder="Password" required>
-        <button class="btn btn-primary" type="submit">Login</button>
-      </form>
-      <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
-    </div>
-  </div>
-</main>
+  <script>
+    const SUPABASE_URL = "https://oixequtjnhlnarcuycca.supabase.co"; 
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9peGVxdXRqbmhsbmFyY3V5Y2NhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgwMjMwNTUsImV4cCI6MjA3MzU5OTA1NX0.XcH-fUgnAm-yHn-ZIMDtuHNqyckwsxjFQk2MGre92S8"; 
+    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-<div id="toast" class="toast"></div>
+    async function login() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const msg = document.getElementById("msg");
+      const err = document.getElementById("err");
+      msg.innerText = "";
+      err.innerText = "";
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-  const supabaseUrl = 'https://oixequtjnhlnarcuycca.supabase.co'; // Replace with your project URL
-  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9peGVxdXRqbmhsbmFyY3V5Y2NhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgwMjMwNTUsImV4cCI6MjA3MzU5OTA1NX0.XcH-fUgnAm-yHn-ZIMDtuHNqyckwsxjFQk2MGre92S8'; // Replace with your anon/public key
-  const supabase = Supabase.createClient(supabaseUrl, supabaseKey);
+      const { data, error } = await supabaseClient.auth.signInWithPassword({
+        email: email,
+        password: password,
+      });
 
-  const loginForm = document.getElementById('loginForm');
-
-  loginForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const email = document.getElementById('lEmail').value.trim();
-    const password = document.getElementById('lPass').value;
-
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email: email,
-      password: password
-    });
-
-    if(error){
-      alert("Login failed: " + error.message);
-    } else {
-      alert("Login successful!");
-      // Redirect to dashboard or home page
-      window.location.href = "index.html";
+      if (error) {
+        err.innerText = error.message;
+      } else {
+        msg.innerText = "✅ Login successful! Redirecting...";
+        setTimeout(() => {
+          window.location.href = "index.html"; // apna dashboard page yaha likho
+        }, 1500);
+      }
     }
-  });
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="assets/js/auth.js"></script>
-
-
-</script>
+  </script>
 </body>
 </html>
