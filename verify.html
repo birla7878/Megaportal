@@ -34,18 +34,31 @@
     <p class="loading">Please wait, you will be redirected automatically.</p>
   </div>
 
-  <script>
-    const SUPABASE_URL = "https://oixequtjnhlnarcuycca.supabase.co"; 
-    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9peGVxdXRqbmhsbmFyY3V5Y2NhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgwMjMwNTUsImV4cCI6MjA3MzU5OTA1NX0.XcH-fUgnAm-yHn-ZIMDtuHNqyckwsxjFQk2MGre92S8"; // yahan aapka anon key hai
-    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  <script type="module">
+    import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm"
 
-    // Auth state change listener
-    supabaseClient.auth.onAuthStateChange(async (event, session) => {
-      if (event === "SIGNED_IN" && session) {
-        // ✅ User verified and logged in, redirect to homepage
-        window.location.href = "https://birla7878.github.io/Megaportal/index.html";
+    const SUPABASE_URL = "https://oixequtjnhlnarcuycca.supabase.co"; 
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9peGVxdXRqbmhsbmFyY3V5Y2NhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgwMjMwNTUsImV4cCI6MjA3MzU5OTA1NX0.XcH-fUgnAm-yHn-ZIMDtuHNqyckwsxjFQk2MGre92S8"; // 🚨 यहां अपनी real anon key डालें
+    const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    async function verifyUser() {
+      // Supabase से verification URL को handle करो
+      const { data, error } = await supabase.auth.getSessionFromUrl({ storeSession: true });
+      
+      if (error) {
+        document.querySelector(".loading").textContent = "❌ Verification failed!";
+        console.error("Verification error:", error.message);
+        return;
       }
-    });
+
+      // ✅ Successfully verified
+      document.querySelector(".loading").textContent = "✅ Verified! Redirecting...";
+      setTimeout(() => {
+        window.location.href = "https://birla7878.github.io/Megaportal/index.html";
+      }, 1500);
+    }
+
+    verifyUser();
   </script>
 </body>
 </html>
