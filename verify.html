@@ -28,28 +28,32 @@
     <p id="message"></p>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <script>
-    // Read token from URL
-    const params = new URLSearchParams(window.location.search);
-    const token = params.get("token");
+    const SUPABASE_URL = "https://oixequtjnhlnarcuycca.supabase.co";
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9peGVxdXRqbmhsbmFyY3V5Y2NhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgwMjMwNTUsImV4cCI6MjA3MzU5OTA1NX0.XcH-fUgnAm-yHn-ZIMDtuHNqyckwsxjFQk2MGre92S8"; // ⚡ apna anon key dalna
+    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
     const statusEl = document.getElementById("status");
     const msgEl = document.getElementById("message");
 
-    if (token) {
-      // Normally yaha backend API call hota hai verify karne ke liye
-      // Demo ke liye token "12345" ko valid maana gaya hai
-      if (token === "12345") {
+    async function handleVerify() {
+      // Supabase automatically exchanges the hash (#access_token) and sets the session
+      const { data, error } = await supabase.auth.getSession();
+
+      if (data?.session) {
         statusEl.innerText = "✅ Email Verified!";
-        msgEl.innerText = "Thank you for confirming your email. You can now log in.";
+        msgEl.innerText = "Redirecting to login page...";
+        setTimeout(() => {
+          window.location.href = "login.html"; // redirect
+        }, 2000);
       } else {
-        statusEl.innerText = "❌ Invalid or Expired Link";
-        msgEl.innerText = "Please request a new verification email.";
+        statusEl.innerText = "❌ Verification Failed";
+        msgEl.innerText = error?.message || "Invalid or expired link.";
       }
-    } else {
-      statusEl.innerText = "❌ Invalid Request";
-      msgEl.innerText = "No verification token found.";
     }
+
+    handleVerify();
   </script>
 </body>
 </html>
