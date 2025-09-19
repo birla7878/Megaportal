@@ -20,6 +20,7 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
     h2 { color: #e60000; }
+    p { margin-top: 10px; }
   </style>
 </head>
 <body>
@@ -28,32 +29,36 @@
     <p id="message"></p>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
     const SUPABASE_URL = "https://oixequtjnhlnarcuycca.supabase.co";
-    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9peGVxdXRqbmhsbmFyY3V5Y2NhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgwMjMwNTUsImV4cCI6MjA3MzU5OTA1NX0.XcH-fUgnAm-yHn-ZIMDtuHNqyckwsxjFQk2MGre92S8"; // ⚡ apna anon key dalna
-    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9peGVxdXRqbmhsbmFyY3V5Y2NhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgwMjMwNTUsImV4cCI6MjA3MzU5OTA1NX0.XcH-fUgnAm-yHn-ZIMDtuHNqyckwsxjFQk2MGre92S8";
+    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
     const statusEl = document.getElementById("status");
     const msgEl = document.getElementById("message");
 
-    async function handleVerify() {
-      // Supabase automatically exchanges the hash (#access_token) and sets the session
-      const { data, error } = await supabase.auth.getSession();
+    async function verifyEmail() {
+      // Supabase auto handles the hash fragment from email link
+      const { data, error } = await supabaseClient.auth.getSession();
 
-      if (data?.session) {
-        statusEl.innerText = "✅ Email Verified!";
-        msgEl.innerText = "Redirecting to login page...";
-        setTimeout(() => {
-          window.location.href = "login.html"; // redirect
-        }, 2000);
-      } else {
+      if (error) {
         statusEl.innerText = "❌ Verification Failed";
-        msgEl.innerText = error?.message || "Invalid or expired link.";
+        msgEl.innerText = error.message;
+      } else if (data.session) {
+        statusEl.innerText = "✅ Email Verified!";
+        msgEl.innerText = "Thank you for confirming your email. Redirecting to login...";
+        setTimeout(() => {
+          window.location.href = "login.html";
+        }, 3000);
+      } else {
+        statusEl.innerText = "❌ Invalid or Expired Link";
+        msgEl.innerText = "Please request a new verification email.";
       }
     }
 
-    handleVerify();
+    verifyEmail();
   </script>
 </body>
 </html>
