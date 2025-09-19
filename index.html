@@ -28,7 +28,7 @@
     align-items: center;
     text-align: center;
     padding: 20px;
-    box-sizing: border-box; /* Important to include padding in the element's total width and height */
+    box-sizing: border-box;
     background-size: cover;
     background-position: center;
 }
@@ -37,18 +37,9 @@
     opacity: 1;
 }
 
-/* Example background images (replace with your actual image URLs) */
-.hero-slide:nth-child(1) {
-    background-image: url('https://picsum.photos/id/1015/1200/400');
-}
-
-.hero-slide:nth-child(2) {
-    background-image: url('https://picsum.photos/id/1016/1200/400');
-}
-
-.hero-slide:nth-child(3) {
-    background-image: url('https://picsum.photos/id/1019/1200/400');
-}
+.hero-slide:nth-child(1) { background-image: url('https://picsum.photos/id/1015/1200/400'); }
+.hero-slide:nth-child(2) { background-image: url('https://picsum.photos/id/1016/1200/400'); }
+.hero-slide:nth-child(3) { background-image: url('https://picsum.photos/id/1019/1200/400'); }
 </style>
 </head>
 <body>
@@ -59,8 +50,6 @@
     <a class="brand" href="index.html">
       <div class="brand-badge">MP</div> MegaPortal
     </a>
-
-
 
     <!-- Mobile Toggle -->
     <button class="mobile-toggle" aria-label="Toggle Menu">☰</button>
@@ -75,8 +64,16 @@
       <a href="contact.html">Contact</a>
 
       <!-- Auth Buttons -->
-      <a class="btn btn-ghost" href="login.html">Login</a>
-      <a class="btn btn-primary" href="signup.html">Sign Up</a>
+      <span id="authButtons">
+        <a id="loginBtn" class="btn btn-ghost" href="login.html">Login</a>
+        <a id="signupBtn" class="btn btn-primary" href="signup.html">Sign Up</a>
+      </span>
+
+      <!-- User Info + Logout -->
+      <span id="userSection" style="display:none;">
+        <span id="userEmail" style="margin-right:10px; font-weight:bold;"></span>
+        <button onclick="logout()" class="btn btn-primary">Logout</button>
+      </span>
     </nav>
   </div>
 </header>
@@ -110,15 +107,13 @@
     <div class="sub">Clean design • Fast • Secure feel</div>
   </div>
   <div class="grid grid-3">
-
     <!-- Matrimonial Slideshow -->
     <article class="card">
       <div class="slideshow">
-  <img src="https://picsum.photos/id/1018/1200/600" class="active">
-  <img src="https://picsum.photos/id/1025/1200/600">
-  <img src="https://picsum.photos/id/1039/1200/600">
-</div>
-
+        <img src="https://picsum.photos/id/1018/1200/600" class="active">
+        <img src="https://picsum.photos/id/1025/1200/600">
+        <img src="https://picsum.photos/id/1039/1200/600">
+      </div>
       <div class="card-body">
         <h3>Matrimonial</h3>
         <p class="sub">Elegant profile cards with live filters & tags.</p>
@@ -150,7 +145,6 @@
         <p class="sub">Search, sort & cart with a clean responsive grid.</p>
       </div>
     </article>
-
   </div>
 </section>
 
@@ -258,8 +252,6 @@
   </div>
 
   <div class="grid grid-3">
-
-    <!-- Free Plan -->
     <article class="card plan-card">
       <div class="plan-header">
         <h3>Free</h3>
@@ -275,7 +267,6 @@
       <a href="signup.html" class="btn btn-primary">Start Free</a>
     </article>
 
-    <!-- Premium Plan -->
     <article class="card plan-card highlight">
       <div class="plan-header">
         <h3>Premium <span class="badge">Popular</span></h3>
@@ -291,7 +282,6 @@
       <a href="signup.html" class="btn btn-primary">Upgrade</a>
     </article>
 
-    <!-- Elite Plan -->
     <article class="card plan-card">
       <div class="plan-header">
         <h3>Elite</h3>
@@ -306,7 +296,6 @@
       </ul>
       <a href="signup.html" class="btn btn-primary">Join Elite</a>
     </article>
-
   </div>
 </section>
 
@@ -330,24 +319,49 @@
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 <script>
-// JavaScript for Hero Slideshow
 const slides = document.querySelectorAll('.hero-slide');
 let currentSlide = 0;
-
 function showSlide(index) {
     slides.forEach(slide => slide.classList.remove('active'));
     slides[index].classList.add('active');
 }
-
 function nextSlide() {
     currentSlide = (currentSlide + 1) % slides.length;
     showSlide(currentSlide);
 }
-
-// Change slide every 5 seconds (adjust as needed)
 setInterval(nextSlide, 5000);
 </script>
-  <script src="assets/js/app.js"></script>
+
+<!-- Supabase Auth Handling -->
+<script src="auth.js"></script>
+<script>
+  async function updateNavbar() {
+    const { data: { session } } = await supabaseClient.auth.getSession();
+    const authButtons = document.getElementById("authButtons");
+    const userSection = document.getElementById("userSection");
+    const userEmail = document.getElementById("userEmail");
+
+    if (session) {
+      authButtons.style.display = "none";
+      userSection.style.display = "inline-block";
+      userEmail.innerText = "Signed in as " + session.user.email;
+    } else {
+      authButtons.style.display = "inline-block";
+      userSection.style.display = "none";
+    }
+  }
+
+  updateNavbar();
+  supabaseClient.auth.onAuthStateChange(() => {
+    updateNavbar();
+  });
+
+  async function logout() {
+    await supabaseClient.auth.signOut();
+    updateNavbar();
+    window.location.href = "index.html";
+  }
+</script>
+<script src="assets/js/app.js"></script>
 </body>
 </html>
-
