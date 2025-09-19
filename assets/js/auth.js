@@ -29,7 +29,9 @@ if (document.getElementById("signupForm")) {
       email: email,
       password: password,
       options: {
-        data: { full_name: name }
+        data: { full_name: name },
+        // 🔑 redirect after email confirmation
+        emailRedirectTo: "https://birla7878.github.io/Megaportal/verify.html"
       }
     });
 
@@ -37,6 +39,7 @@ if (document.getElementById("signupForm")) {
       alert("❌ Signup Failed: " + error.message);
     } else {
       alert("✅ Signup Successful! Please check your email for verification.");
+      // 🚫 यहां direct redirect मत करो, पहले user को verify करना है
       window.location.href = "login.html";
     }
   });
@@ -63,7 +66,8 @@ if (document.getElementById("loginForm")) {
       alert("❌ Login Failed: " + error.message);
     } else {
       alert("✅ Login Successful!");
-      window.location.href = "social.html"; // after login redirect to social page
+      // login ke baad redirect
+      window.location.href = "social.html"; 
     }
   });
 }
