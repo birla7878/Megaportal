@@ -71,3 +71,49 @@ if (document.getElementById("loginForm")) {
     }
   });
 }
+
+// ============================
+// Navbar Auth State Handling
+// ============================
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const loginBtn = document.getElementById("loginBtn");
+  const signupBtn = document.getElementById("signupBtn");
+
+  async function checkAuth() {
+    const { data: { user } } = await supabaseClient.auth.getUser();
+
+    if (user) {
+      // ✅ Logged in
+      if (loginBtn) {
+        loginBtn.textContent = user.user_metadata?.full_name || "Profile";
+        loginBtn.href = "profile.html";
+      }
+
+      if (signupBtn) {
+        signupBtn.textContent = "Logout";
+        signupBtn.href = "#";
+        signupBtn.onclick = async (e) => {
+          e.preventDefault();
+          await supabaseClient.auth.signOut();
+          window.location.href = "index.html";
+        };
+      }
+    } else {
+      // ❌ Logged out
+      if (loginBtn) {
+        loginBtn.textContent = "Login";
+        loginBtn.href = "login.html";
+      }
+
+      if (signupBtn) {
+        signupBtn.textContent = "Sign Up";
+        signupBtn.href = "signup.html";
+        signupBtn.onclick = null;
+      }
+    }
+  }
+
+  checkAuth();
+  supabaseClient.auth.onAuthStateChange(() => checkAuth());
+});
