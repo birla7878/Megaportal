@@ -75,8 +75,9 @@
   <a href="contact.html">Contact</a>
 
   <!-- Auth Buttons -->
-  <a id="loginBtn" href="login.html" class="btn">Login</a>
-<a id="signupBtn" href="signup.html" class="btn btn-primary">Sign Up</a>
+  <a id="loginBtn" class="btn btn-outline-primary" href="login.html">Login</a>
+<a id="signupBtn" class="btn btn-primary" href="signup.html">Sign Up</a>
+
 
 </nav>
  </div>
@@ -349,48 +350,7 @@ function nextSlide() {
 setInterval(nextSlide, 5000);
 </script>
   <script src="assets/js/app.js"></script>
-
- <!--Change login/signup buttons in header if user is logged in-->
- <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-<script>
-  const SUPABASE_URL = "https://oixequtjnhlnarcuycca.supabase.co";
-  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9peGVxdXRqbmhsbmFyY3V5Y2NhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgwMjMwNTUsImV4cCI6MjA3MzU5OTA1NX0.XcH-fUgnAm-yHn-ZIMDtuHNqyckwsxjFQk2MGre92S8"; // <-- यहाँ अपनी असली key डालें
-  const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-  const loginBtn = document.getElementById("loginBtn");
-  const signupBtn = document.getElementById("signupBtn");
-
-  async function checkAuth() {
-    const { data: { user } } = await supabaseClient.auth.getUser();
-
-    if (user) {
-      // Logged in
-      loginBtn.textContent = user.user_metadata?.full_name || "Profile";
-      loginBtn.href = "profile.html";
-
-      signupBtn.textContent = "Logout";
-      signupBtn.href = "#";
-      signupBtn.onclick = async (e) => {
-        e.preventDefault();
-        await supabaseClient.auth.signOut();
-        window.location.reload();
-      };
-    } else {
-      // Logged out
-      loginBtn.textContent = "Login";
-      loginBtn.href = "login.html";
-
-      signupBtn.textContent = "Sign Up";
-      signupBtn.href = "signup.html";
-      signupBtn.onclick = null;
-    }
-  }
-
-  checkAuth();
-  supabaseClient.auth.onAuthStateChange(() => checkAuth());
-</script>
-
-
-</body>
+<script src="assets/js/auth.js"></script>
+ </body>
 </html>
 
