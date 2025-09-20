@@ -75,8 +75,9 @@
   <a href="contact.html">Contact</a>
 
   <!-- Auth Buttons -->
-  <a id="loginBtn" class="btn btn-ghost" href="login.html">Login</a>
-  <a id="signupBtn" class="btn btn-primary" href="signup.html">Sign Up</a>
+  <a id="loginBtn" href="login.html" class="btn">Login</a>
+<a id="signupBtn" href="signup.html" class="btn btn-primary">Sign Up</a>
+
 </nav>
  </div>
 </header>
@@ -349,25 +350,47 @@ setInterval(nextSlide, 5000);
 </script>
   <script src="assets/js/app.js"></script>
 
-  <script>
+ <!--Change login/signup buttons in header if user is logged in-->
+ <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script>
+  const SUPABASE_URL = "https://oixequtjnhlnarcuycca.supabase.co";
+  const SUPABASE_ANON_KEY = "YOUR_ANON_KEY";
+  const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
   const loginBtn = document.getElementById("loginBtn");
   const signupBtn = document.getElementById("signupBtn");
-  const currentUser = localStorage.getItem("currentUser");
 
-  if (currentUser) {
-    // Login → Profile
-    loginBtn.textContent = "Profile";
-    loginBtn.href = "profile.html";
+  async function checkAuth() {
+    const { data: { user } } = await supabaseClient.auth.getUser();
 
-    // Signup → Logout
-    signupBtn.textContent = "Logout";
-    signupBtn.href = "#";
-    signupBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      localStorage.removeItem("currentUser");
-      window.location.reload(); // page refresh करके buttons reset
-    });
+    if (user) {
+      // User logged in
+      loginBtn.textContent = user.user_metadata?.full_name || "Profile";
+      loginBtn.href = "profile.html";
+
+      signupBtn.textContent = "Logout";
+      signupBtn.href = "#";
+      signupBtn.addEventListener("click", async (e) => {
+        e.preventDefault();
+        await supabaseClient.auth.signOut();
+        window.location.reload();
+      });
+    } else {
+      // User logged out
+      loginBtn.textContent = "Login";
+      loginBtn.href = "login.html";
+
+      signupBtn.textContent = "Sign Up";
+      signupBtn.href = "signup.html";
+    }
   }
+
+  checkAuth();
+
+  // Listen for auth state changes
+  supabaseClient.auth.onAuthStateChange(() => {
+    checkAuth();
+  });
 </script>
 
 </body>
