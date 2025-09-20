@@ -354,7 +354,7 @@ setInterval(nextSlide, 5000);
  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 <script>
   const SUPABASE_URL = "https://oixequtjnhlnarcuycca.supabase.co";
-  const SUPABASE_ANON_KEY = "YOUR_ANON_KEY";
+  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9peGVxdXRqbmhsbmFyY3V5Y2NhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgwMjMwNTUsImV4cCI6MjA3MzU5OTA1NX0.XcH-fUgnAm-yHn-ZIMDtuHNqyckwsxjFQk2MGre92S8"; // <-- यहाँ अपनी असली key डालें
   const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
   const loginBtn = document.getElementById("loginBtn");
@@ -364,34 +364,32 @@ setInterval(nextSlide, 5000);
     const { data: { user } } = await supabaseClient.auth.getUser();
 
     if (user) {
-      // User logged in
+      // Logged in
       loginBtn.textContent = user.user_metadata?.full_name || "Profile";
       loginBtn.href = "profile.html";
 
       signupBtn.textContent = "Logout";
       signupBtn.href = "#";
-      signupBtn.addEventListener("click", async (e) => {
+      signupBtn.onclick = async (e) => {
         e.preventDefault();
         await supabaseClient.auth.signOut();
         window.location.reload();
-      });
+      };
     } else {
-      // User logged out
+      // Logged out
       loginBtn.textContent = "Login";
       loginBtn.href = "login.html";
 
       signupBtn.textContent = "Sign Up";
       signupBtn.href = "signup.html";
+      signupBtn.onclick = null;
     }
   }
 
   checkAuth();
-
-  // Listen for auth state changes
-  supabaseClient.auth.onAuthStateChange(() => {
-    checkAuth();
-  });
+  supabaseClient.auth.onAuthStateChange(() => checkAuth());
 </script>
+
 
 </body>
 </html>
