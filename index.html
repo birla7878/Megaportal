@@ -67,18 +67,18 @@
 
     <!-- Navbar Links -->
     <nav class="nav">
-      <a href="index.html">Home</a>
-      <a href="matrimonial.html">Matrimonial</a>
-      <a href="social.html">Social</a>
-      <a href="shop.html">Shop</a>
-      <a href="cart.html" class="cart-link">Cart <span id="cartCount" class="cart-count">0</span></a>
-      <a href="contact.html">Contact</a>
+  <a href="index.html">Home</a>
+  <a href="matrimonial.html">Matrimonial</a>
+  <a href="social.html">Social</a>
+  <a href="shop.html">Shop</a>
+  <a href="cart.html" class="cart-link">Cart <span id="cartCount" class="cart-count">0</span></a>
+  <a href="contact.html">Contact</a>
 
-      <!-- Auth Buttons -->
-      <a class="btn btn-ghost" href="login.html">Login</a>
-      <a class="btn btn-primary" href="signup.html">Sign Up</a>
-    </nav>
-  </div>
+  <!-- Auth Buttons -->
+  <a id="loginBtn" class="btn btn-ghost" href="login.html">Login</a>
+  <a id="signupBtn" class="btn btn-primary" href="signup.html">Sign Up</a>
+</nav>
+ </div>
 </header>
 
 
@@ -348,6 +348,28 @@ function nextSlide() {
 setInterval(nextSlide, 5000);
 </script>
   <script src="assets/js/app.js"></script>
+
+  <script>
+  const loginBtn = document.getElementById("loginBtn");
+  const signupBtn = document.getElementById("signupBtn");
+  const currentUser = localStorage.getItem("currentUser");
+
+  if (currentUser) {
+    // Login → Profile
+    loginBtn.textContent = "Profile";
+    loginBtn.href = "profile.html";
+
+    // Signup → Logout
+    signupBtn.textContent = "Logout";
+    signupBtn.href = "#";
+    signupBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      localStorage.removeItem("currentUser");
+      window.location.reload(); // page refresh करके buttons reset
+    });
+  }
+</script>
+
 </body>
 </html>
 
